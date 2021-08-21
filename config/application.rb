@@ -1,4 +1,5 @@
 require_relative "boot"
+require_relative '../app/middlewares/telescope'
 
 require "rails/all"
 
@@ -18,5 +19,11 @@ module Playground
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.generators do |g|
+      g.test_framework  nil #to skip test framework
+    end
+
+    config.middleware.use Telescope
   end
 end
